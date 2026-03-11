@@ -1,0 +1,175 @@
+sample_id	family_id	subject_id	group	sex	age	antibiotics
+D120	FM0615%@	FM0615%@_DS	Down Syndrome	female	0	Yes
+D109	MJ8404*!	MJ8404*!_C	Control	male	0	No
+D118	M2276!?	M2276!?_DS	Down Syndrome	female	1	Yes
+D063	BF2015&@	BF2015&@_C	Control	male	10	No
+D093	Cd1980@%	Cd1980@%_C	Down Syndrome Should say control Check	male	10	No
+D206	CD5087!*	CD5087!*_DS	Down Syndrome	female	10	No
+D207	CR5728@$	CR5728@$_C	Control	female	10	No
+D075	ES0830?!	ES0830?!_C	Control	female	10	No
+D045	GA0204!%	GA0204!%_C	Control	female	10	No
+D126	HS1980!?	HS1980!?_DS	Down Syndrome	female	10	Yes
+D154	MM2461&*	MM2461&*_DS	Down Syndrome	male	10	Yes
+D078	BD1578!?	BD1578!?_DS	Down Syndrome	female	11	No
+D034	ES2210$%	ES2210$%_DS	Down Syndrome	female	11	No
+D169	LP2246!*	LP2246!*_C	Control	female	11	No
+D001	MB2126!%	MB2126!%_C	Control	male	11	No
+D146	SP2003!%	SP2003!%_DS	Down Syndrome	female	11	No
+D216	AAA23	AAA23_DS	Down Syndrome	male	11	Yes
+D123	VD2468$?	VD2468$?_C	Control	male	11	No
+D170	LP2246!*	LP2246!*_DS	Down Syndrome	male	0.9166666666666666	No
+D064	BF2015&@	BF2015&@_DS	Down Syndrome	male	12	No
+D094	Cd1980@%	Cd1980@%_DS	Down Syndrome	female	12	No
+D072	HH2012!.	HH2012!._DS	Down Syndrome	male	12	No
+D155	JBJ3004?@	JBJ3004?@_C	Control	female	12	No
+D174	PB1619*?	PB1619*?_DS	Down Syndrome	male	12	Yes
+D163	TS0307!£	TS0307!£_C	Control	male	12	No
+D183	AAA15	AAA15_C	Control	male	13	No
+D190	AAA17	AAA17_DS	Down Syndrome	female	13	No
+D008	CM2004@!	CM2004@!_DS	Down Syndrome	female	13	Yes
+D080	CM6742!%	CM6742!%_DS	Down Syndrome	male	13	Yes
+D002	MB2126!%	MB2126!%_DS	Down Syndrome	female	13	No
+D132	TS2005!?	TS2005!?_DS	Down Syndrome	female	13	No
+D107	TS4493!%	TS4493!%_C	Control	female	13	No
+D147	AAA07	AAA07_C	Control	female	14	No
+D177	AAA13	AAA13_C	Control	male	14	No
+D184	AAA15	AAA15_DS	Down Syndrome	male	14	No
+D221	AAA26	AAA26_C	Control	female	14	Yes
+D189	AAA17	AAA17_C	Control	female	14	No
+D205	CD5087!*	CD5087!*_C	Control	female	14	No
+D096	DK0979<>	DK0979<>_DS	Down Syndrome	female	14	No
+D153	MM2461&*	MM2461&*_C	Control	female	14	No
+D164	TS0307!£	TS0307!£_DS	Down Syndrome	female	14	No
+D202	AAA21	AAA21_DS	Down Syndrome	female	14	No
+D124	VD2468$?	VD2468$?_DS	Down Syndrome	male	14	No
+D060	VM4352!*	VM4352!*_DS	Down Syndrome	female	14	No
+D149	AAA06	AAA06_C	Control	male	15	Yes
+D150	AAA06	AAA06_DS	Down Syndrome	male	15	No
+D137	AAA01	AAA01_C	Control	male	15	No
+D004	JW1997!>	JW1997!>_DS	Down Syndrome	female	15	No
+D187	AAA16	AAA16_C	Control	female	15	No
+D127	SB1173!!	SB1173!!_C	Control	female	15	No
+D024	1D2903!?	1D2903!?_DS	Down Syndrome	female	16	Yes
+D178	AAA13	AAA13_DS	Down Syndrome	female	16	No
+D068	CF2025*@	CF2025*@_DS	Down Syndrome	male	16	No
+D079	CM6742!%	CM6742!%_C	Control	male	16	No
+D086	CR3117!@	CR3117!@_DS	Down Syndrome	female	16	Yes
+D030	DD0504!*	DD0504!*_DS	Down Syndrome	female	16	No
+D095	DK0979<>	DK0979<>_C	Control	male	16	No
+D186	MB1132£$	MB1132£$_DS	Down Syndrome	female	16	No
+D018	MW2580!@	MW2580!@_DS	Down Syndrome	male	16	Yes
+D108	TS4493!%	TS4493!%_DS	Down Syndrome	male	16	No
+D148	AAA07	AAA07_DS	Down Syndrome	female	17	No
+D200	AAA20	AAA20_DS	Down Syndrome	male	17	No
+D204	AAA22	AAA22_DS	Down Syndrome	male	17	No
+D007	CM2004@!	CM2004@!_C	Control	male	17	No
+D188	AAA16	AAA16_DS	Down Syndrome	male	17	No
+D201	AAA21	AAA21_C	Control	female	17	No
+D152	AAA05	AAA05_DS	Down Syndrome	male	18	No
+D013	DG3231@>	DG3231@>_C	Control	female	18	No
+D138	AAA01	AAA01_DS	Down Syndrome	male	18	Yes
+D033	ES2210$%	ES2210$%_C	Control	male	18	No
+D019	LG5439!@	LG5439!@_C	Control	male	18	No
+D185	MB1132£$	MB1132£$_C	Control	male	18	No
+D031	NH3003!?	NH3003!?_C	Control	female	18	Yes
+D067	CF2025*@	CF2025*@_C	Control	male	19	No
+D198	AAA19	AAA19_DS	Down Syndrome	male	19	No
+D051	FF1234!?	FF1234!?_C	Control	female	19	No
+D011	LT5466%@	LT5466%@_C	Control	male	19	No
+D032	NH3003!?	NH3003!?_DS	Down Syndrome	male	19	Yes
+D047	AM3468!?	AM3468!?_C	Control	male	2	No
+D136	CM1327!*	CM1327!*_DS	Down Syndrome	female	2	Yes
+D175	CR0209£$	CR0209£$_C	Control	female	2	No
+D160	CR2909!?	CR2909!?_DS	Down Syndrome	male	2	No
+D056	GB1987!$	GB1987!$_DS	Down Syndrome	female	2	No
+D050	LA2468?!	LA2468?!_DS	Down Syndrome	female	2	No
+D058	LG2017!$	LG2017!$_DS	Down Syndrome	female	2	No
+D103	MB2009&@	MB2009&@_C	Control	female	2	Yes
+D151	AAA05	AAA05_C	Control	female	20	No
+D017	MW2580!@	MW2580!@_C	Control	female	20	Yes
+D025	RM1818!?	RM1818!?_C	Control	male	20	No
+D131	TS2005!?	TS2005!?_C	Control	female	20	No
+D014	DG3231@>	DG3231@>_DS	Down Syndrome	male	21	No
+D036	ES2389!?	ES2389!?_DS	Down Syndrome	female	22	No
+D003	JW1997!>	JW1997!>_C	Control	male	22	Yes
+D028	LC5560!*	LC5560!*_DS	Down Syndrome	male	22	Yes
+D012	LT5466%@	LT5466%@_DS	Down Syndrome	female	22	No
+D114	NH1963.,%	NH1963.,%_DS	Down Syndrome	female	22	No
+D023	1D2903!?	1D2903!?_C	Control	female	23	No
+D085	CR3117!@	CR3117!@_C	Control	male	23	No
+D197	AAA19	AAA19_C	Control	female	23	No
+D026	RM1818!?	RM1818!?_DS	Down Syndrome	male	23	No
+D020	LG5439!@	LG5439!@_DS	Down Syndrome	male	24	NA
+D009	Cv1675?&	Cv1675?&_C	Control	male	26	No
+D010	Cv1675?&	Cv1675?&_DS	Down Syndrome	male	26	No
+D042	ES9641@?	ES9641@?_DS	Down Syndrome	female	26	No
+D040	NH4001!	NH4001!_DS	Down Syndrome	female	27	No
+D006	TS2315!?	TS2315!?_DS	Down Syndrome	female	27	No
+D005	TS2315!?	TS2315!?_C	Control	female	29	No
+D144	AAA02	AAA02_DS	Down Syndrome	male	3	Yes
+D119	FM0615%@	FM0615%@_C	Control	male	3	Yes
+D082	KM2573!%	KM2573!%_DS	Down Syndrome	male	3	No
+D104	MB2009&@	MB2009&@_DS	Down Syndrome	female	3	No
+D110	MJ8404*!	MJ8404*!_DS	Down Syndrome	female	3	Yes
+D038	BS3017!$	BS3017!$_DS	Down Syndrome	female	31	No
+D041	ES9641@?	ES9641@?_C	Control	female	32	No
+D035	ES2389!?	ES2389!?_C	Control	female	34	No
+D037	BS3017!$	BS3017!$_C	Control	female	35	No
+D055	GB1987!$	GB1987!$_C	Control	female	38	No
+D117	M2276!?	M2276!?_C	Control	female	38	No
+D135	CM1327!*	CM1327!*_C	Control	female	4	No
+D052	FF1234!?	FF1234!?_DS	Down Syndrome	female	4	No
+D049	LA2468?!	LA2468?!_C	Control	male	4	No
+D128	SB1173!!	SB1173!!_DS	Down Syndrome	female	4	No
+D053	SM1950!@	SM1950!@_DS	Down Syndrome	male	4	No
+D209	TB2021!@	TB2021!@_C	Control	female	4	No
+D081	KM2573!%	KM2573!%_C	Control	female	45	No
+D105	DK1409&@	DK1409&@_C	Control	female	47	No
+D219	AAA25	AAA25_C	Control (foster mum)	female	49	No
+D171	AAA12	AAA12_C	Control	male	5	No
+D048	AM3468!?	AM3468!?_DS	Down Syndrome	male	5	No
+D122	CM2579 *>	CM2579 *>_DS	Down Syndrome	male	5	Yes
+D176	CR0209£$	CR0209£$_DS	Down Syndrome	female	5	No
+D195	EF8313*@	EF8313*@_C	Control	female	5	Yes
+D220	AAA25	AAA25_DS	Down Syndrome	male	5	No
+D173	PB1619*?	PB1619*?_C	Control	female	5	No
+D099	SM8294!@	SM8294!@_C	Control	male	5	No
+D111	TS1511!£	TS1511!£_C	Control	female	51	No
+D211	AAA10	AAA10_C	Control	female	53	No
+D071	HH2012!.	HH2012!._C	Control	female	53	No
+D029	DD0504!*	DD0504!*_C	Control	female	54	No
+D199	AAA20	AAA20_C	Control	female	56	No
+D077	BD1578!?	BD1578!?_C	Control	female	56	Yes
+D115	GM9569&@	GM9569&@_C	Control	female	56	No
+D059	VM4352!*	VM4352!*_C	Control	female	56	Yes
+D092	NC1967&@	NC1967&@_DS	Down Syndrome	female	57	No
+D143	AAA02	AAA02_C	Control	male	6	No
+D172	AAA12	AAA12_DS	Down Syndrome	female	6	No
+D222	AAA26	AAA26_DS	Down Syndrome	female	6	No
+D062	AM1946£$	AM1946£$_DS	Down Syndrome	male	6	Yes
+D196	EF8313*@	EF8313*@_DS	Down Syndrome	female	6	Yes
+D076	ES0830?!	ES0830?!_DS	Down Syndrome	male	6	No
+D054	SM1950!@	SM1950!@_C	Control	male	6	No
+D100	SM8294!@	SM8294!@_DS	Down Syndrome	male	6	No
+D210	TB2021!@	TB2021!@_DS	Down Syndrome	female	6	No
+D091	NC1967&@	NC1967&@_C	Control	female	60	No
+D113	NH1963.,%	NH1963.,%_C	Control	female	61	No
+D039	NH4001!	NH4001!_C	Control	female	63	No
+D027	LC5560!*	LC5560!*_C	Control	female	64	No
+D061	AM1946£$	AM1946£$_C	Control	male	7	No
+D125	HS1980!?	HS1980!?_C	Control	male	7	No
+D057	LG2017!$	LG2017!$_C	Control	male	7	Yes
+D157	TS2520&@	TS2520&@_C	Control	female	7	Yes
+D215	AAA23	AAA23_C	Control	female	7	No
+D159	CR2909!?	CR2909!?_C	Control	male	8	No
+D208	CR5728@$	CR5728@$_DS	Down Syndrome	female	8	No
+D106	DK1409&@	DK1409&@_DS	Down Syndrome	female	8	Yes
+D046	GA0204!%	GA0204!%_DS	Down Syndrome	male	8	Yes
+D121	CM2579*>	CM2579*>_C	Control	male	9	No
+D212	AAA10	AAA10_DS	Down Syndrome	female	9	No
+D116	GM9569&@	GM9569&@_DS	Down Syndrome	female	9	Yes
+D156	JBJ3004?@	JBJ3004?@_DS	Down Syndrome	male	9	Yes
+D145	SP2003!%	SP2003!%_C	Control	female	9	No
+D112	TS1511!£	TS1511!£_DS	Down Syndrome	female	9	No
+D158	TS2520&@	TS2520&@_DS	Down Syndrome	male	9	No
+D203	AAA22	AAA22_C	Control	NA	NA	NA
