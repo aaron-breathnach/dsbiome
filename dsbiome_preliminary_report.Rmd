@@ -1,0 +1,265 @@
+---
+title: "Down Syndrome gut microbiome: preliminary analysis report"
+author: "Aaron Walsh"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    theme: readable
+    df_print: paged
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 9,
+  fig.height = 6,
+  dpi = 300
+)
+
+library(tidyverse)
+library(scales)
+
+required_files <- c(
+  "tables/report/sample_overview.tsv",
+  "tables/report/household_overview.tsv",
+  "tables/report/family_size.tsv",
+  "tables/report/age_summary.tsv",
+  "tables/report/alpha_stats.tsv",
+  "tables/report/permanova.tsv",
+  "tables/report/household_distance_summary.tsv",
+  "tables/report/species_summary.tsv",
+  "tables/report/top_species_group.tsv",
+  "tables/report/humann_summary.tsv",
+  "tables/report/humann_top.tsv",
+  "tables/report/strain_sharing_summary.tsv",
+  "tables/report/strain_sharing_by_species.tsv",
+  "plots/report/alpha_diversity.png",
+  "plots/report/pcoa_bray_curtis.png",
+  "plots/report/household_distance_density.png",
+  "plots/differentially_abundant_species.png",
+  "plots/differentially_prevalent_species.png",
+  "figures/strain_sharing/ani_same_vs_different_household.png",
+  "figures/strain_sharing/shared_strains_by_species.png",
+  "figures/strain_sharing/shared_vs_not_shared_by_species.png"
+)
+
+missing_files <- required_files[!file.exists(required_files)]
+if (length(missing_files) > 0) {
+  stop(
+    paste0(
+      "Missing precomputed report files. Run src/precompute_report_outputs.R first.\n",
+      "Missing files:\n- ",
+      paste(missing_files, collapse = "\n- ")
+    )
+  )
+}
+
+sample_overview <- readr::read_tsv("tables/report/sample_overview.tsv", show_col_types = FALSE)
+household_overview <- readr::read_tsv("tables/report/household_overview.tsv", show_col_types = FALSE)
+family_size <- readr::read_tsv("tables/report/family_size.tsv", show_col_types = FALSE)
+age_summary <- readr::read_tsv("tables/report/age_summary.tsv", show_col_types = FALSE)
+
+alpha_stats <- readr::read_tsv("tables/report/alpha_stats.tsv", show_col_types = FALSE)
+permanova <- readr::read_tsv("tables/report/permanova.tsv", show_col_types = FALSE)
+household_distance_summary <- readr::read_tsv("tables/report/household_distance_summary.tsv", show_col_types = FALSE)
+
+species_summary <- readr::read_tsv("tables/report/species_summary.tsv", show_col_types = FALSE)
+top_species_group <- readr::read_tsv("tables/report/top_species_group.tsv", show_col_types = FALSE)
+
+humann_summary <- readr::read_tsv("tables/report/humann_summary.tsv", show_col_types = FALSE)
+humann_top <- readr::read_tsv("tables/report/humann_top.tsv", show_col_types = FALSE)
+
+strain_summary <- readr::read_tsv("tables/report/strain_sharing_summary.tsv", show_col_types = FALSE)
+shared_by_species <- readr::read_tsv("tables/report/strain_sharing_by_species.tsv", show_col_types = FALSE)
+```
+
+# Executive summary
+
+This report summarises preliminary taxonomic and functional analysis of the Down Syndrome gut microbiome cohort. Species-level taxonomic profiles were generated using MetaPhlAn and functional pathway profiles were generated using HUMAnN. Statistical analyses used mixed-effects models of the form:
+
+```{r model-framework, echo=TRUE, eval=FALSE}
+microbiome_feature ~ group * age + (1 | family_id)
+```
+
+The main finding so far is that there is limited evidence for large microbiome differences between Down Syndrome participants and family-member controls after accounting for household/family structure. Instead, the strongest pattern appears to be similarity between members of the same household. This suggests that shared household environment may be a major determinant of gut microbiome composition in this cohort.
+
+Strain-sharing analysis based on pairwise MAG similarity (skani ANI) supports this interpretation: 18 of 23 same-household, same-species MAG pairs (78.3%) met a high-similarity shared-strain threshold (ANI >= 99.5%).
+
+All results shown below are precomputed before rendering this report. To refresh outputs, run:
+
+```{r precompute-command, echo=TRUE, eval=FALSE}
+Rscript src/precompute_report_outputs.R
+```
+
+# Study design and sample overview
+
+```{r sample-overview}
+sample_overview %>%
+  knitr::kable(caption = "Number of samples by study group.")
+```
+
+```{r household-overview}
+household_overview %>%
+  knitr::kable(caption = "Overview of the analysis dataset.")
+```
+
+```{r family-size}
+family_size %>%
+  knitr::kable(caption = "Number of samples per family/household.")
+```
+
+```{r age-summary}
+age_summary %>%
+  knitr::kable(caption = "Age distribution by group.", digits = 2)
+```
+
+Because each participant has a single timepoint, age-related analyses should be interpreted as cross-sectional age associations rather than longitudinal ageing effects.
+
+# Alpha diversity
+
+Shannon diversity was calculated from the MetaPhlAn species-level relative abundance table. The primary model tested whether Shannon diversity differed by group, age, or the group-by-age interaction while accounting for family/household membership.
+
+```{r alpha-diversity}
+alpha_stats %>%
+  knitr::kable(caption = "Mixed-effects model results for Shannon diversity.", digits = 4)
+```
+
+```{r alpha-plot, fig.cap="Shannon diversity by group.", fig.width=8, fig.height=5, out.width="100%"}
+knitr::include_graphics("plots/report/alpha_diversity.png")
+```
+
+# Beta diversity and household similarity
+
+Bray-Curtis distances were calculated from the species-level MetaPhlAn relative abundance table. PERMANOVA was used to test the association between microbiome composition and group, age, sex, and antibiotic exposure. Permutations were stratified by family/household to account for the matched/family-based design.
+
+```{r beta-diversity}
+permanova %>%
+  knitr::kable(caption = "PERMANOVA results for Bray-Curtis distances.", digits = 4)
+```
+
+```{r pcoa-plot, fig.cap="PCoA of Bray-Curtis distances coloured by group."}
+knitr::include_graphics("plots/report/pcoa_bray_curtis.png")
+```
+
+To directly assess household similarity, Bray-Curtis distances were compared between pairs of samples from the same family and pairs from different families.
+
+```{r household-distances}
+household_distance_summary %>%
+  knitr::kable(caption = "Within-family versus between-family Bray-Curtis distances.", digits = 4)
+```
+
+```{r household-distance-plot, fig.cap="Within-family versus between-family Bray-Curtis distances."}
+knitr::include_graphics("plots/report/household_distance_density.png")
+```
+
+This household-level pattern is currently the clearest biological signal in the dataset. It suggests that shared household environment may have a stronger relationship with microbiome composition than Down Syndrome status.
+
+# Species-level differential abundance and prevalence
+
+Species-level differential abundance was assessed using CLR-transformed MetaPhlAn relative abundances. A complementary prevalence analysis used logistic mixed models to test whether detection of each species differed between groups. Species were filtered to retain taxa present above 1% relative abundance in at least 10% of samples.
+
+```{r species-model-functions, echo=TRUE, eval=FALSE}
+# Species-level results are precomputed in src/precompute_report_outputs.R
+```
+
+```{r species-models}
+species_summary %>%
+  knitr::kable(caption = "Summary of species-level mixed model results.", digits = 4)
+```
+
+```{r top-species-results}
+top_species_group %>%
+  knitr::kable(caption = "Top species-level group-associated results before/after FDR correction.", digits = 4)
+```
+
+```{r existing-species-plots, fig.cap="Existing species-level summary plots generated from the analysis scripts.", out.width="100%"}
+knitr::include_graphics(c(
+  "plots/differentially_abundant_species.png",
+  "plots/differentially_prevalent_species.png"
+))
+```
+
+# HUMAnN pathway analysis
+
+HUMAnN pathway abundances were converted to counts per million and log-transformed using `log1p`. Each pathway was tested using the same mixed-effects model framework:
+
+```{r humann-framework, echo=TRUE, eval=FALSE}
+log1p(pathway_cpm) ~ group * age + (1 | family_id)
+```
+
+```{r humann-results}
+humann_summary %>%
+  knitr::kable(caption = "Summary of HUMAnN pathway model results.", digits = 4)
+```
+
+```{r humann-top}
+humann_top %>%
+  knitr::kable(caption = "Top HUMAnN pathway results by model term.", digits = 4)
+```
+
+Overall, the pathway analysis does not provide strong evidence for major functional differences between Down Syndrome participants and family-member controls. One pathway showed an age-associated signal after FDR correction in the current output, but group and group-by-age effects did not remain significant after correction.
+
+# Strain-sharing analysis
+
+To complement species- and pathway-level results, a strain-sharing analysis was performed using pairwise ANI from skani across high-quality MAGs (completeness >= 90%, contamination <= 5%). Pairs were restricted to same-species comparisons (ANI >= 95%), and putative shared strains were defined as ANI >= 99.5%.
+
+```{r strain-sharing-import}
+strain_summary %>%
+  knitr::kable(caption = "Summary of putative strain sharing among same-household, same-species MAG pairs.")
+```
+
+```{r strain-sharing-by-species}
+shared_by_species %>%
+  knitr::kable(caption = "Number of putative shared strains (ANI >= 99.5%) by species.")
+```
+
+```{r strain-sharing-figures, fig.cap="Strain-sharing results from skani ANI analysis.", out.width="100%"}
+knitr::include_graphics(c(
+  "figures/strain_sharing/ani_same_vs_different_household.png",
+  "figures/strain_sharing/shared_strains_by_species.png",
+  "figures/strain_sharing/shared_vs_not_shared_by_species.png"
+))
+```
+
+Across same-household, same-species pairs, the high fraction of ANI >= 99.5% comparisons is consistent with substantial household-associated strain sharing.
+
+# Interpretation
+
+The current analyses suggest three main conclusions:
+
+1. There is limited evidence that Down Syndrome status is associated with large differences in species-level gut microbiome composition in this family-controlled cohort.
+2. HUMAnN pathway analysis similarly provides limited evidence for major functional differences by Down Syndrome status.
+3. Microbiome profiles appear to be strongly structured by household/family, suggesting that shared environment is an important determinant of microbiome composition in this cohort.
+4. Strain-sharing results further support household effects, with 18/23 (78.3%) same-household, same-species MAG pairs meeting the ANI >= 99.5% shared-strain threshold.
+
+These findings are important because family-member controls provide a stringent comparison group. If Down Syndrome participants are compared with unrelated controls, apparent disease-associated microbiome signatures may be confounded by household, diet, lifestyle, and shared environmental exposures. The present study design helps reduce these confounding effects.
+
+# Ageing-related analysis
+
+The current dataset contains a single timepoint per participant. Therefore, it cannot directly test longitudinal microbiome ageing or within-person microbiome change over time. The model term `age` should be interpreted as a cross-sectional age association:
+
+> Do older participants have different microbiome profiles from younger participants?
+
+This is distinct from asking whether an individual's microbiome changes as they age. The `group:age` interaction tests whether the age association differs between Down Syndrome participants and controls. In the current HUMAnN pathway results, there is limited evidence for robust group-by-age functional differences after multiple-testing correction.
+
+# Conclusion
+
+The current results suggest that Down Syndrome status is not associated with major taxonomic or functional differences in the gut microbiome after accounting for family/household structure. Instead, the clearest signal is strong similarity between members of the same household. This is potentially an important result because it suggests that shared household environment may explain a substantial proportion of microbiome variation in this cohort. The strain-sharing analysis provides complementary evidence for this interpretation, with 78.3% of same-household, same-species MAG pairs meeting a high ANI threshold for putative shared strains.
+
+# Reproducibility notes
+
+- Precompute and write report outputs: `Rscript src/precompute_report_outputs.R`.
+- Taxonomic profiling: MetaPhlAn species-level relative abundance table in `data/merged_metaphlan_tables.txt`.
+- Functional profiling: HUMAnN pathway abundance table in `data/merged_pathabundance.tsv`.
+- Metadata: `data/metadata.tsv`.
+- Main model framework: `microbiome_feature ~ group * age + (1 | family_id)`.
+- Alpha/beta diversity: `vegan`.
+- Mixed-effects models: `lmerTest` and `glmmTMB`.
+- Multiple testing correction: Benjamini-Hochberg FDR within each model term and analysis type.
+
